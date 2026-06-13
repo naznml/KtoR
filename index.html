@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Қазақ тілін оқыту әдістемесі — Оразбаева, Қасым, Балтабаева, Оразахынова, Рахметова</title>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#eef2ff,#fdf2f8,#fff7ed);
+  color:#1f2937;
+  line-height:1.65;
+  user-select:none;
+  overflow-x:hidden;
+}
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+.bg span{
+  position:absolute;
+  font-size:42px;
+  opacity:.12;
+  filter:drop-shadow(0 8px 18px rgba(79,70,229,.15));
+  animation:float 13s infinite ease-in-out;
+}
+.bg span:nth-child(1){left:6%;top:15%;animation-delay:0s}
+.bg span:nth-child(2){left:78%;top:13%;animation-delay:2s}
+.bg span:nth-child(3){left:12%;top:72%;animation-delay:4s}
+.bg span:nth-child(4){left:84%;top:72%;animation-delay:1s}
+.bg span:nth-child(5){left:45%;top:42%;animation-delay:3s}
+.bg span:nth-child(6){left:58%;top:82%;animation-delay:5s}
+.bg span:nth-child(7){left:28%;top:28%;animation-delay:6s}
+.bg span:nth-child(8){left:72%;top:48%;animation-delay:7s}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(0deg) scale(1)}
+  50%{transform:translateY(-20px) rotate(7deg) scale(1.05)}
+}
+
+.hero{
+  position:relative;
+  z-index:1;
+  background:linear-gradient(135deg,#1e3a8a,#7e22ce,#be185d);
+  color:white;
+  text-align:center;
+  padding:34px 18px 28px;
+  overflow:hidden;
+}
+.hero:before{
+  content:"📚 🧠 ✍️ 📝 🎓";
+  position:absolute;
+  left:50%;
+  top:12px;
+  transform:translateX(-50%);
+  font-size:22px;
+  letter-spacing:12px;
+  opacity:.22;
+  white-space:nowrap;
+}
+.book{
+  display:inline-block;
+  background:rgba(255,255,255,.17);
+  border:1px solid rgba(255,255,255,.35);
+  padding:7px 14px;
+  border-radius:999px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+h1{
+  margin:0;
+  font-size:34px;
+  line-height:1.15;
+}
+.subtitle{
+  max-width:950px;
+  margin:12px auto 0;
+  font-size:16px;
+  opacity:.96;
+}
+.notice{
+  max-width:920px;
+  margin:17px auto 0;
+  background:#fef3c7;
+  color:#78350f;
+  border:2px solid #facc15;
+  border-radius:20px;
+  padding:13px 16px;
+  font-weight:800;
+}
+.notice small{
+  display:block;
+  font-weight:600;
+  margin-top:6px;
+}
+.pay{
+  margin-top:9px;
+  padding-top:9px;
+  border-top:1px dashed rgba(120,53,15,.35);
+}
+.booksrc{
+  max-width:920px;
+  margin:11px auto 0;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.3);
+  color:#fff7ed;
+  border-radius:17px;
+  padding:12px 15px;
+  font-size:14px;
+}
+.nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  display:flex;
+  justify-content:flex-start;
+  gap:8px;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  padding:10px 12px;
+  border-bottom:1px solid #dbeafe;
+  box-shadow:0 8px 22px rgba(79,70,229,.10);
+  -ms-overflow-style:none;
+  scrollbar-width:none;
+}
+.nav::-webkit-scrollbar{display:none}
+.nav a{
+  flex:0 0 auto;
+  text-decoration:none;
+  background:#eef2ff;
+  color:#3730a3;
+  border:1px solid #c7d2fe;
+  border-radius:999px;
+  padding:7px 13px;
+  font-weight:800;
+  font-size:13px;
+  white-space:nowrap;
+}
+.nav a:hover{
+  background:#4f46e5;
+  color:white;
+}
+.wrap{
+  position:relative;
+  z-index:1;
+  max-width:1150px;
+  margin:28px auto 70px;
+  padding:0 16px;
+}
+.card{
+  background:rgba(255,255,255,.96);
+  border:1px solid #dbeafe;
+  border-radius:28px;
+  padding:25px;
+  margin-bottom:32px;
+  box-shadow:0 20px 48px rgba(79,70,229,.12);
+  scroll-margin-top:95px;
+}
+.head{
+  border-bottom:1px solid #e0e7ff;
+  padding-bottom:15px;
+  margin-bottom:20px;
+}
+h2{
+  margin:0;
+  color:#3730a3;
+  font-size:27px;
+}
+.meta{
+  margin-top:8px;
+  font-size:13px;
+  color:#1e3a8a;
+  font-weight:900;
+  background:#e0e7ff;
+  display:inline-block;
+  padding:5px 11px;
+  border-radius:999px;
+}
+.desc{
+  margin-top:10px;
+  background:#eef2ff;
+  border-left:6px solid #4f46e5;
+  border-radius:15px;
+  padding:12px 14px;
+  color:#374151;
+}
+.summarybox{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:22px;
+  padding:18px;
+  margin:20px 0;
+}
+.summarybox h3{
+  margin:0 0 10px;
+  color:#3730a3;
+}
+.linkbox{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  border-left:6px solid #f97316;
+  border-radius:22px;
+  padding:16px 18px;
+  margin:18px 0;
+}
+.linkbox h3{
+  margin:0 0 8px;
+  color:#9a3412;
+}
+.keybox{
+  background:#fdf2f8;
+  border:1px solid #fbcfe8;
+  border-left:6px solid #db2777;
+  border-radius:22px;
+  padding:18px;
+  margin:18px 0;
+}
+.keybox h3{
+  margin:0 0 10px;
+  color:#be185d;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+.pill{
+  background:white;
+  border:1px solid #fce7f3;
+  border-radius:15px;
+  padding:10px 12px;
+  font-size:14px;
+}
+.q{
+  border:1px solid #e5e7eb;
+  border-radius:22px;
+  padding:18px;
+  margin:17px 0;
+  background:#fff;
+}
+.q:hover{
+  border-color:#c4b5fd;
+  box-shadow:0 10px 26px rgba(79,70,229,.13);
+}
+.qtag{
+  display:inline-block;
+  font-size:12px;
+  font-weight:900;
+  color:#3730a3;
+  background:#e0e7ff;
+  border-radius:999px;
+  padding:4px 10px;
+  margin-bottom:8px;
+}
+.qtitle{
+  font-weight:900;
+  margin-bottom:11px;
+  color:#111827;
+}
+.opt{
+  display:block;
+  margin:8px 0;
+  padding:11px 13px;
+  border-radius:14px;
+  background:#fafafa;
+  border:1px solid #f1f5f9;
+  cursor:pointer;
+}
+.opt:hover{
+  background:#eef2ff;
+  border-color:#c7d2fe;
+}
+.opt input{margin-right:8px}
+.der{
+  margin-top:10px;
+  font-size:13px;
+  color:#475569;
+  background:#f8fafc;
+  border-radius:12px;
+  padding:8px 10px;
+}
+.btn{
+  border:0;
+  border-radius:18px;
+  background:linear-gradient(135deg,#1e3a8a,#7e22ce,#be185d);
+  color:white;
+  font-size:16px;
+  font-weight:900;
+  padding:14px 24px;
+  cursor:pointer;
+  box-shadow:0 10px 24px rgba(79,70,229,.25);
+}
+.btn:hover{transform:translateY(-1px)}
+.result{margin-top:22px}
+.summary{
+  background:#eef2ff;
+  border:1px solid #c7d2fe;
+  border-left:6px solid #4f46e5;
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:16px;
+}
+.summary h3{
+  margin:0;
+  color:#3730a3;
+  font-size:24px;
+}
+.ans{
+  border-radius:16px;
+  padding:15px;
+  margin:12px 0;
+  border:1px solid #e5e7eb;
+}
+.ok{background:#ecfdf5;border-color:#86efac}
+.bad{background:#fff1f2;border-color:#fecdd3}
+.oktxt{color:#15803d;font-weight:900}
+.badtxt{color:#be123c;font-weight:900}
+.ex{margin-top:8px;font-size:15px}
+.footer{
+  text-align:center;
+  color:#64748b;
+  margin:34px 0 0;
+  font-size:14px;
+}
+@media(max-width:800px){
+  h1{font-size:27px}
+  .hero{padding:30px 15px 24px}
+  .card{padding:19px;border-radius:24px}
+  h2{font-size:22px}
+  .subtitle{font-size:15px}
+  .grid{grid-template-columns:1fr}
+  .bg span{font-size:34px;opacity:.12}
+}
+</style>
+</head>
+
+<body>
+<div class="bg">
+  <span>📚</span>
+  <span>🧠</span>
+  <span>✍️</span>
+  <span>📝</span>
+  <span>🎓</span>
+  <span>🔍</span>
+  <span>📖</span>
+  <span>✨</span>
+</div>
+
+<section class="hero">
+  <div class="book">Қазақ тілін оқыту әдістемесі</div>
+  <h1>Қазақ тілін оқыту әдістемесі<br>жалпы негіздер мен салаларды оқыту</h1>
+  <div class="subtitle">
+    Магистратураға түсуге арналған КТ дайындық сайты. Материал Ф.Ш. Оразбаева, Б.Қ. Қасым, Ж.Қ. Балтабаева, Н.А. Оразахынова, Р.С. Рахметова оқулығы бойынша 10 ірі блокқа біріктірілді.
+  </div>
+  <div class="notice">
+    © @elnazm_ln — Назерке<br>
+    Бұл сайттың ресми авторы — @elnazm_ln. Материалды тек автордың өзі ғана сата алады.
+    <small>Егер бұл тестті сізге басқа адам сатса, авторға хабарлаңыз.</small>
+    <div class="pay">Төлем: Kaspi, Halyk, Freedom — НАЗЕРКЕ М.</div>
+  </div>
+  <div class="booksrc">
+    <b>Негізгі дереккөз:</b> Оразбаева Ф.Ш., Қасым Б.Қ., Балтабаева Ж.Қ., Оразахынова Н.А., Рахметова Р.С. Қазақ тілін оқыту әдістемесі. Қарағанды, 2016.
+    <br><b>Құрылымдық негіз:</b> «Қазақ тілін оқыту әдістемесі» пәні бойынша КТ тест спецификациясы.
+  </div>
+</section>
+
+<nav class="nav" id="nav"></nav>
+<main class="wrap" id="app"></main>
+
+<script>
+const DATA=[
+{
+id:"b1",
+title:"1-блок — Қазақ тілін оқыту әдістемесі пән ретінде",
+lvl:"КТ байланысы: 1-блок, 2-блок | A/B деңгейі",
+desc:"Бұл блокта қазақ тілін оқыту әдістемесінің дербес пән, іргелі әрі қолданбалы ғылым ретіндегі сипаты, зерттеу нысаны, мақсаты, міндеттері және білім мазмұны қарастырылады.",
+kt:"Ресми КТ құрылымындағы «Теориялық-қолданбалы ғылым ретінде қазақ тілін оқыту әдістемесі» және «Мектептегі қазақ тілін оқытудың әдіснамалық жүйесі» тақырыптарымен байланысты.",
+summary:"Қазақ тілін оқыту әдістемесі — қазақ тілін оқытудың ғылыми-теориялық негіздерін, мақсаты мен міндеттерін, мазмұны мен формаларын, тілді меңгертудің амалдары мен ұстанымдарын, нәтижеге жетудің жолдарын, сабақ түрлерін, әдіс-тәсілдерді және оқыту құралдарын зерттейтін ғылым. Ол дербес пән ретінде болашақ қазақ тілі мен әдебиеті мұғалімдерінің кәсіби шеберлігін қалыптастыруға бағытталады. Әдістеме ғылым мен білімнің арасын жалғайтын сала ретінде теорияны практикамен ұштастырады.",
+keys:[
+["қазақ тілін оқыту әдістемесі","қазақ тілін оқытудың мақсаты, мазмұны, әдісі, формасы, құралы мен нәтижесін зерттейтін ғылым"],
+["дербес пән","өз нысаны, мақсаты, міндеті, мазмұны бар оқу-ғылыми сала"],
+["іргелі ғылым","тілді оқытудың ғылыми-теориялық заңдылықтарын айқындайтын бағыт"],
+["қолданбалы ғылым","теориялық білімді оқыту тәжірибесінде іске асыратын бағыт"],
+["зерттеу нысаны","қазақ тілін оқыту үдерісі және оны тиімді ұйымдастыру жолдары"],
+["білім мазмұны","болашақ маман меңгеруге тиіс білім, білік, дағды және тұлғалық қасиеттер жүйесі"]
+],
+questions:[
+{
+level:"A",
+type:"single",
+q:"Қазақ тілін оқыту әдістемесінің дербес пән ретіндегі негізгі сипаты",
+options:[
+{id:"a",t:"қазақ тілін оқытудың мақсаты, мазмұны, әдісі, формасы мен нәтижесін зерттейді"},
+{id:"b",t:"қазақ тіліндегі дыбыстардың артикуляциялық құрамын ғана сипаттайды"},
+{id:"c",t:"қазақ тілінің лексикалық қорын тарихи шығу тегіне қарай ғана жүйелейді"},
+{id:"d",t:"сөйлем мүшелерінің синтаксистік байланысын жеке грамматикалық сала ретінде талдайды"},
+{id:"e",t:"сөзжасамдық тұлғалардың уәждемелік негізін ғана анықтайды"},
+{id:"f",t:"морфологиялық категориялардың ішкі құрылымын тілдік дерек ретінде ғана қарастырады"}
+],
+a:["a"],
+ex:"Қазақ тілін оқыту әдістемесі тілдік материалдың өзін ғана емес, оны оқытудың мақсатын, мазмұнын, әдісін, формасын, құралын және нәтижесін зерттейді.",
+source:"Дереккөз: Оразбаева Ф.Ш. және т.б. Қазақ тілін оқыту әдістемесі. I модуль."
+},
+{
+level:"A",
+type:"multi",
+q:"Қазақ тілін оқыту әдістемесі зерттейтін негізгі мәселелер",
+options:[
+{id:"a",t:"оқытудың мақсаты мен міндеттері"},
+{id:"b",t:"оқытудың мазмұны мен формалары"},
+{id:"c",t:"әдіс-тәсілдер мен оқыту құралдары"},
+{id:"d",t:"сабақ түрі мен нәтижеге жету жолдары"},
+{id:"e",t:"оқушының тілдік материалды меңгеру үдерісі"},
+{id:"f",t:"қазақ тілін оқытудың ұстанымдары"}
+],
+a:["a","b","c"],
+ex:"Бұл сұрақта әдістеме зерттейтін мәселелердің бір бөлігі берілді: мақсат-міндет, мазмұн-форма, әдіс-тәсіл және құрал. Қалған дұрыс мазмұндар басқа сұрақтарда жеке тексеріледі.",
+source:"Дереккөз: Оразбаева Ф.Ш. және т.б. Қазақ тілін оқыту әдістемесі. 1.1.3-тармақ."
+},
+{
+level:"B",
+type:"multi",
+q:"Қазақ тілін оқыту әдістемесінің қолданбалы ғылым екенін дәлелдейтін белгілер",
+options:[
+{id:"a",t:"теориялық білімді сабақ үдерісінде қолдануға бағытталады"},
+{id:"b",t:"тілдік материалды меңгертудің амал-тәсілдерін ұсынады"},
+{id:"c",t:"оқыту нәтижесіне жетудің практикалық жолдарын айқындайды"},
+{id:"d",t:"әдістемелік ұғымдарды тек тарихи сипаттама ретінде қарастырады"},
+{id:"e",t:"оқыту тәжірибесінен бөлек теориялық атаулар жүйесін ғана жасайды"},
+{id:"f",t:"пән мазмұнын оқушы әрекетінен тәуелсіз тілдік тізім ретінде береді"}
+],
+a:["a","b","c"],
+ex:"Қолданбалы сипаты әдістеменің теорияны сабақта іске асыруынан, тілді меңгертудің амалдарын ұсынуынан және нәтижеге жетудің жолдарын көрсетуінен байқалады.",
+source:"Дереккөз: Оразбаева Ф.Ш. және т.б. Қазақ тілін оқыту әдістемесі. 1.1.1-тармақ."
+},
+{
+level:"B",
+type:"single",
+q:"Әдістеме ғылым мен білімнің арасын жалғайтын сала деп танылуының себебі",
+options:[
+{id:"a",t:"ғылыми тұжырымдарды оқыту жүйесінде қолданылатын білім мазмұны мен әдісіне айналдырады"},
+{id:"b",t:"тілдік заңдылықтарды оқыту үдерісінен бөліп, теориялық сипатта ғана сақтайды"},
+{id:"c",t:"оқыту мазмұнын сабақ мақсатына байланыстырмай, дайын ақпарат ретінде ұсынады"},
+{id:"d",t:"педагогикалық әрекетті ғылыми негізден ажыратып, тәжірибелік дағдымен шектейді"},
+{id:"e",t:"оқушы әрекетін есепке алмай, тілдік деректерді жеке пәндік тізім ретінде береді"},
+{id:"f",t:"әдіс-тәсілдерді білім мазмұнынан бөлек дербес атаулар жиынтығы ретінде қарастырады"}
+],
+a:["a"],
+ex:"Әдістеме ғылымдағы жаңалықтар мен теориялық тұжырымдарды білім беру үдерісіне енгізеді, сондықтан ғылым мен білімнің арасын байланыстырады.",
+source:"Дереккөз: Оразбаева Ф.Ш. және т.б. Қазақ тілін оқыту әдістемесі. 1.1.1-тармақ."
+},
+{
+level:"A",
+type:"single",
+q:"Қазақ тілін оқыту әдістемесі пәнінің зерттеу нысанына жақын тұжырым",
+options:[
+{id:"a",t:"қазақ тілін оқыту үдерісі және оны тиімді ұйымдастыру жолдары"},
+{id:"b",t:"қазақ тілінің дыбыстық жүйесін тарихи салыстыру арқылы сипаттау"},
+{id:"c",t:"қазақ тілінің сөздік қорын шығу тегі бойынша топтау"},
+{id:"d",t:"сөйлем құрылымын таза синтаксистік заңдылық ретінде талдау"},
+{id:"e",t:"сөз таптарының грамматикалық категорияларын оқытудан тыс жүйелеу"},
+{id:"f",t:"мәтіннің көркемдік құрылымын әдебиеттанулық тұрғыдан бағалау"}
+],
+a:["a"],
+ex:"Әдістеменің зерттеу нысаны — қазақ тілін оқыту үдерісі, оның мазмұны, формасы, әдісі, құралы және нәтижеге жету жолдары.",
+source:"Дереккөз: Оразбаева Ф.Ш. және т.б. Қазақ тілін оқыту әдістемесі. 1.1.3-тармақ."
+},
+{
+level:"B",
+type:"multi",
+q:"Қазақ тілін оқыту әдістемесі пәнінің білім мазмұнына кіретін құрамдар",
+options:[
+{id:"a",t:"теориялық білім"},
+{id:"b",t:"практикалық білік"},
+{id:"c",t:"тілдік дағды"},
+{id:"d",t:"кәсіби әрекетке қажет тұлғалық қасиеттер"},
+{id:"e",t:"оқытудың нәтижесін қалыптастыратын тәжірибе қоры"},
+{id:"f",t:"болашақ маманның әдістемелік дайындығы"}
+],
+a:["a","b","c"],
+ex:"Білім мазмұны білім, білік, дағды және тұлғалық қасиеттер жүйесімен байланысты. Бұл сұрақта негізгі үш құрам тексерілді.",
+source:"Дереккөз: Оразбаева Ф.Ш. және т.б. Қазақ тілін оқыту әдістемесі. 1.1.4-тармақ."
+},
+{
+level:"B",
+type:"single",
+q:"Қазақ тілін оқыту әдістемесінің мақсатына сәйкес келетін тұжырым",
+options:[
+{id:"a",t:"болашақ мұғалімді қазақ тілін тиімді оқытуға қажет теориялық және практикалық дайындықпен қаруландыру"},
+{id:"b",t:"тілдік материалды оқушы әрекетінен бөлек ғылыми терминдер тізімі ретінде жаттату"},
+{id:"c",t:"қазақ тілінің барлық саласын оқыту әдісінен ажыратып, тек теориялық жүйе ретінде беру"},
+{id:"d",t:"сабақ үдерісін әдіс-тәсілсіз ұйымдастырылатын ақпарат беру формасына айналдыру"},
+{id:"e",t:"оқушының тілдік дағдысын қалыптастырмай, ережені есте сақтаумен шектеу"},
+{id:"f",t:"оқыту нәтижесін бағаламай, білім мазмұнын тек тақырыптар ретімен орналастыру"}
+],
+a:["a"],
+ex:"Бұл пән болашақ қазақ тілі мұғалімінің теориялық білімін, практикалық білігін және кәсіби шеберлігін қалыптастыруға бағытталады.",
+source:"Дереккөз: Оразбаева Ф.Ш. және т.б. Қазақ тілін оқыту әдістемесі. I модуль."
+}
+]
+},
